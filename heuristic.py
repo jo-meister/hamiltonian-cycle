@@ -6,19 +6,20 @@ def hamiltonian_cycle(graph, n):
     visited = set([0])
 
     while len(cycle) < n:
-        neighbors = []
+        next = None
+        min = n
         for i, v in enumerate(graph[cycle[-1]]):
             if v == 1 and i not in visited:
-                neighbors.append(i)
-        neighbors.sort(key=lambda v: sum(graph[v]))
-        for v in neighbors:
-            cycle.append(v)
-            visited.add(v)
+                cur = sum(graph[i])
+                if cur < min:
+                    min = cur
+                    next = i
+        if next is None:
             break
-        else:
-            return None
+        cycle.append(next)
+        visited.add(next)
 
-    if graph[cycle[-1]][cycle[0]] == 1:
+    if len(cycle) == n and graph[cycle[-1]][cycle[0]] == 1:
         print("Hamiltonian cycle found:")
         cycle.append(cycle[0])
         print([v + 1 for v in cycle])
@@ -27,7 +28,7 @@ def hamiltonian_cycle(graph, n):
 
 
 # Read from file.
-file = open("datafiles/hamcycle_jcwalker10.dat")
+file = open("big.dat")
 problem_name = file.readline()
 num_nodes = file.readline()
 lines = file.readlines()

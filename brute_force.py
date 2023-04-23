@@ -1,25 +1,27 @@
 import time
 
 
-def hamiltonian_cycle(graph, path=[]):
-    # Return the path if a hamiltonian cycle is found.
-    if len(path) == len(graph) and graph[path[-1]][path[0]] == 1:
-        return path
+def hamiltonian_cycle(graph):
+    # Initialize variables.
+    n = len(graph)
+    stack = [(i, [i]) for i in range(n)]
 
-    # Visit each unvisited neighbor of the last node in the path
-    last = path[-1] if path else None
-    for node in range(len(graph)):
-        if node not in path and (last is None or graph[last][node] == 1):
-            cycle = hamiltonian_cycle(graph, path + [node])
-            if cycle is not None:
-                return cycle
-
+    # Traverse graph using DFS.
+    while stack:
+        (node, path) = stack.pop()
+        # Check if path is Hamiltonian cycle.
+        if len(path) == n and graph[path[-1]][path[0]] == 1:
+            return path
+        # Add unvisited neighbors to stack.
+        for neighbor in range(n):
+            if neighbor not in path and graph[node][neighbor] == 1:
+                stack.append((neighbor, path + [neighbor]))
     # If no Hamiltonian cycle is found, return None
     return None
 
 
 # Read from file.
-file = open("datafiles/hamcycle_jcwalker10.dat")
+file = open("big.dat")
 problem_name = file.readline()
 num_nodes = file.readline()
 lines = file.readlines()
