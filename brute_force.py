@@ -21,7 +21,7 @@ def hamiltonian_cycle(graph):
 
 
 # Read from file.
-file = open("big.dat")
+file = open("datafiles/hamcycle_jcwalker10.dat")
 problem_name = file.readline()
 num_nodes = file.readline()
 lines = file.readlines()
