@@ -60,7 +60,7 @@ Reduction from Vertex Cover steps
 
 # Hamiltonian Cycle to Traveling Salesman Problem Mapping
 Find if a route exists that visits each vertex (city) once, ends at the starting vertex, and has a total distance traveled less than or equal to n.
-*   The hc_to_tsp,py program will create a new dat file containing the graph of the mapped input.
+*   The hc_to_tsp.py program will create a new dat file containing the graph of the mapped input.
 
 Reduction from Hamiltonian Cycle steps
 1. Construct the graph: Set the edge weight (distance) between connected vertices (cities) as 1 and all other distances as 2.
