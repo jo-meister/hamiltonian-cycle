@@ -1,27 +1,38 @@
 import time
+import sys
+from itertools import permutations
 
 
 def hamiltonian_cycle(graph):
-    # Initialize variables.
     n = len(graph)
-    stack = [(i, [i]) for i in range(n)]
 
-    # Traverse graph using DFS.
-    while stack:
-        (node, path) = stack.pop()
-        # Check if path is Hamiltonian cycle.
-        if len(path) == n and graph[path[-1]][path[0]] == 1:
-            return path
-        # Add unvisited neighbors to stack.
-        for neighbor in range(n):
-            if neighbor not in path and graph[node][neighbor] == 1:
-                stack.append((neighbor, path + [neighbor]))
-    # If no Hamiltonian cycle is found, return None
+    # Generate all possible paths.
+    paths = permutations(range(n))
+
+    # Check if each path is a Hamiltonian cycle.
+    for path in paths:
+        if verify_hamiltonian_cycle(graph, path):
+            return list(path)
     return None
 
 
+def verify_hamiltonian_cycle(graph, path):
+    n = len(graph)
+
+    # Verify the path is a cycle.
+    if graph[path[0]][path[n-1]] == 0:
+        return False
+
+    # Verify that there is an edge between each vertex.
+    for i in range(n-1):
+        if graph[path[i]][path[i+1]] == 0:
+            return False
+
+    return True
+
+
 # Read from file.
-file = open("datafiles/hamcycle_jcwalker10.dat")
+file = open(sys.argv[1])
 problem_name = file.readline()
 num_nodes = file.readline()
 lines = file.readlines()

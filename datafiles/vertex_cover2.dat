@@ -1,8 +1,0 @@
-Minimum vertex cover
-2
-1 0 1
-$
----------------
-Minimum vertex cover from brute force (optimal): ['5', '3', '1'].
-Minimum vertex cover from approximation (near optimal): ['1', '2', '3', '4', '6', '5'].
----------------
