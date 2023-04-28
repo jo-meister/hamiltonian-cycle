@@ -15,6 +15,10 @@ hc_to_tsp.py: A mapping from a hamiltonian cycle problem's input to a traveling 
 datafiles: A directory for storing input example input graphs.
 >   Each .dat file contains an input graph. Specify the input file to use as the command line argument.
 
+mappedfiles: A directory containing the generated mappings.
+*   hc_to_tsp_map.dat: a mapping from hamiltonian cycle to tsp
+*   vertexcover_to_hc_map.dat: a mapping from vertex cover to hamiltonian cycle
+
 
 # Hamiltonian Cycle Problem
 Determine if there is a path in a graph that visits each vertex once and returns to the vertex it started at. The problem is NP Complete because it is both NP and NP-hard. It is NP because no polynomial time solution has been found for it and it is verifiable in polynomial time. In my brute force and heuristic algorithms I provide a 'verify_hamiltonian_cycle' function that returns true in O(N) time if the given path is a hamiltonian cycle in the graph. Therefore the problem is verifiable in polynomial time. The hamiltonian cycle problem is NP-hard because any problem in NP can theoretically be reduced to it. I provide a reduction from the vertex cover problem to the hamiltonian cycle.
@@ -46,6 +50,7 @@ This file was sent from Eleri Floyd who has the vertex cover problem. It causes 
 
 # Vertex Cover to Hamiltonian Cycle Mapping
 Find a set of vertices of size k that includes at least one endpoint of every edge of a graph
+*   The vertexcover_to_hc.py program will create a new dat file containing the graph of the mapped input.
 
 Reduction from Vertex Cover steps
 1. Create components: For every edge in the minimum vertex cover problem, create a component. Connect components that represent u and u' of an edge. The number of chains will be equal to the number of vertices.
@@ -55,6 +60,7 @@ Reduction from Vertex Cover steps
 
 # Hamiltonian Cycle to Traveling Salesman Problem Mapping
 Find if a route exists that visits each vertex (city) once, ends at the starting vertex, and has a total distance traveled less than or equal to n.
+*   The hc_to_tsp,py program will create a new dat file containing the graph of the mapped input.
 
 Reduction from Hamiltonian Cycle steps
 1. Construct the graph: Set the edge weight (distance) between connected vertices (cities) as 1 and all other distances as 2.
