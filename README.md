@@ -17,7 +17,7 @@ datafiles: A directory for storing input example input graphs.
 
 
 # Hamiltonian Cycle Problem
-Determine if there is a path in a graph that visits each vertex once and returns to the vertex it started at. The problem is NP Complete because it is both NP and NP-hard. It is NP because no polynomial time solutuion has been found for it and it is verifiable in polynomial time. In my brute force and heuristic algorithms I provide a 'verify_hamiltonian_cycle' function that returns true in O(N) time if the given path is a hamiltonian cycle in the graph. Therefore the problem is verifiable in polynomial time. The hamiltonian cycle problem is NP-hard because any problem in NP can be theoretically be reduced to it. I provide a reduction from the vertex cover problem to the hamiltonian cycle.
+Determine if there is a path in a graph that visits each vertex once and returns to the vertex it started at. The problem is NP Complete because it is both NP and NP-hard. It is NP because no polynomial time solution has been found for it and it is verifiable in polynomial time. In my brute force and heuristic algorithms I provide a 'verify_hamiltonian_cycle' function that returns true in O(N) time if the given path is a hamiltonian cycle in the graph. Therefore the problem is verifiable in polynomial time. The hamiltonian cycle problem is NP-hard because any problem in NP can theoretically be reduced to it. I provide a reduction from the vertex cover problem to the hamiltonian cycle.
 
 ### Brute Force Approach
 This algorithm takes in a graph as input and returns a Hamiltonian Cycle if one exists. It checks if every single path through the graph contains a Hamiltonian Cycle. There are N! possible paths in a graph and it takes N time to verify if each one is a Hamiltonian Cycle. So the complexity of this algorithm is O(N*N!) where N is the number of vertices in the graph.
@@ -35,7 +35,7 @@ This file contains a graph that presents a challenge for the heuristic solution.
 *   HC to TSP certificate - Route found of total distance 7: [1, 2, 4, 6, 7, 5, 3, 1]
 
 ### big.dat
-This file contains a graph that presents a challenge for the brute force solution. It is intractable for the brute force solution because there are to many possible paths through the graph to create a cycle. The heuristic algorithm is able to find the solution in less than two minutes.
+This file contains a graph that presents a challenge for the brute force solution. It is intractable for the brute force solution because there are too many possible paths through the graph to create a cycle. The heuristic algorithm is able to find the solution in less than two minutes.
 *   Heuristic certificate - Hamiltonian cycle found: [1, 2, 3998, 4, 3999, 5, 4000, 6, 7, …, 3996, 3997, 3, 1]
 *   Brute force certificate - None after 20 minutes
 
@@ -54,7 +54,7 @@ Reduction from Vertex Cover steps
 
 
 # Hamiltonian Cycle to Traveling Salesman Problem Mapping
-Find the if a route exists that visits each vertex (city) once, ends at the starting vertex, and has a total distance traveled less than or equal to n.
+Find if a route exists that visits each vertex (city) once, ends at the starting vertex, and has a total distance traveled less than or equal to n.
 
 Reduction from Hamiltonian Cycle steps
 1. Construct the graph: Set the edge weight (distance) between connected vertices (cities) as 1 and all other distances as 2.
